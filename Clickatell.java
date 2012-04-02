@@ -37,9 +37,9 @@ public class Clickatell extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
             
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
-        sUsername = sp.getString("settings_username", "notset");
-        sPassword = sp.getString("settings_password","notset");
-        sApiId = sp.getString("settings_api_id","notset");
+        	sUsername = sp.getString("settings_username", "notset");
+        	sPassword = sp.getString("settings_password","notset");
+        	sApiId = sp.getString("settings_api_id","notset");
         
 	}
 	
@@ -57,24 +57,24 @@ public class Clickatell extends Activity {
 				String sBalance = "";
 				
 				// TODO Auto-generated method stub
-				 try {
-					 URL url = new URL(baseUrl + "getbalance?user=" + sUsername + "&password=" + sPassword + "&api_id=" + sApiId);
+				try {
+					URL url = new URL(baseUrl + "getbalance?user=" + sUsername + "&password=" + sPassword + "&api_id=" + sApiId);
 	            	
-	            	BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream())); 
+	            			BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream())); 
 	
-	            	String line;
-	            	while ((line = br.readLine()) != null)
-	            	{
-	            		sBalance = line;
-	            	}
+	            			String line;
+	            			while ((line = br.readLine()) != null)
+	            			{
+	            				sBalance = line;
+	            			}
 	            	
-	            } catch (Exception e)
-	            {
-	            	//Handle Exception
-	            }
+	            		} catch (Exception e)
+	            		{
+	            			//Handle Exception
+	            		}
 			}
             
-    	}).start();
+    		}).start();
 		
 	}
 	
@@ -91,8 +91,8 @@ public class Clickatell extends Activity {
 			{
 				try
 				{
-		    	  	EditText telNumberTmp = (EditText)findViewById(R.id.contacts);
-		    	  	String telNumber = telNumberTmp.getText().toString();
+		    	  		EditText telNumberTmp = (EditText)findViewById(R.id.contacts);
+		    	  		String telNumber = telNumberTmp.getText().toString();
 					
 					EditText msgTextTmp = (EditText)findViewById(R.id.sSmsBody);
 					String msgText = msgTextTmp.getText().toString();
@@ -105,28 +105,27 @@ public class Clickatell extends Activity {
 
 						BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
 												
-		            	String line;
-		            	while ((line = br.readLine()) != null)
-		            	{
-		            		tStatus = line;
-		            	}
+		            			String line;
+		            			while ((line = br.readLine()) != null)
+		            			{
+		            				tStatus = line;
+		            			}
 		            	
-		            	if (tStatus.startsWith("ERR:"))
-		            	{
-		            		//Display Error Message
-		            	} else {
-		            		//Display Confirm Message
-		            	}
+		            			if (tStatus.startsWith("ERR:"))
+		            			{
+		            				//Display Error Message
+		            			} else {
+		            				//Display Confirm Message
+		            			}
 						
 					} catch (Exception e)
 					{
 						//Handle Exception
 					}
 		 
-		      }		 
-		      catch (Exception e) {  }
+		      		} catch (Exception e) {  }
 		 
-		  }
+		  	}
 		 
 		};
 		 
